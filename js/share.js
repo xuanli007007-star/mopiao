@@ -10,12 +10,14 @@ window.MPShare = (function () {
     ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
     ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
   }
+  const NO_LEAD = '，。、；：？！”’）》」』,.;:?!)';
   function wrap(ctx, text, maxW) {
     const lines = []; let line = '';
     for (const ch of text) {
       if (ch === '\n') { lines.push(line); line = ''; continue; }
       const t = line + ch;
-      if (ctx.measureText(t).width > maxW && line) { lines.push(line); line = ch; } else line = t;
+      // 标点不能落在行首
+      if (ctx.measureText(t).width > maxW && line && NO_LEAD.indexOf(ch) < 0) { lines.push(line); line = ch; } else line = t;
     }
     if (line) lines.push(line);
     return lines;
