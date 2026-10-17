@@ -4,6 +4,8 @@
 
 纯前端 H5，无需构建，无需后端。
 
+在线玩：https://xuanli007007-star.github.io/mopiao/
+
 ## 本地运行
 
 ```bash
@@ -14,7 +16,14 @@ python3 -m http.server 8765
 
 ## 部署
 
-整个文件夹拖到 Cloudflare Pages、Vercel 或 GitHub Pages 即可。结局卡上的二维码会自动指向部署后的地址。
+当前通过 GitHub Pages 托管，仓库 main 分支根目录就是站点。改完内容后：
+
+```bash
+git add -A && git commit -m "更新事件" && git push
+```
+
+推送后一两分钟自动上线。结局卡上的二维码会自动指向部署后的地址。
+换到 Cloudflare Pages 或 Vercel 也只需把整个文件夹上传。
 
 ## 目录
 
